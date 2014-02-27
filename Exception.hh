@@ -20,6 +20,30 @@ protected:
 
 public:
 	Exception(const std::string & msg) throw();
+	virtual const char *Message() const throw();
 	~Exception() throw();
-	
 };
+
+class SyntaxErrorException : public Exception
+{
+public:
+	SyntaxErrorException(const std::string & msg) throw();
+	~SyntaxErrorException() throw();
+};
+
+class BadParameterException : public Exception
+{
+public:
+	BadParameterException(const std::string & msg) throw();
+	~BadParameterException() throw();
+};
+
+class DivByZeroException : public Exception
+{
+public:
+	DivByZeroException(const std::string & msg) throw();
+	~DivByZeroException() throw();
+};
+
+
+
