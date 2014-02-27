@@ -12,17 +12,23 @@
 # define ABSTRACTVM_HH_
 
 # include "Memory.hh"
-# include "Calculator.hh"
 
 class AbstractVM
 {
 public:
 	AbstractVM();
 	~AbstractVM();
+
+void		setMemory(Memory const &memory);
+void		setFile(Parsing const &file);
+Memory		*getMemory(void) const;
+Parsing		*getParsing(void) const;
+
+void		executeInstruction(Instruction const &instruct);
 	
 private:
 	Memory		_memory;
-	Calculator  _cpu;
+	Parsing		_file;
 
 };
 

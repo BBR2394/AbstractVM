@@ -12,6 +12,10 @@
 
 int		main(int ac, char **av)
 {
-	
+	AbstractVM 			vm;
+	Instruction			instruction;
+
+	vm.getParsing()->setFile("test.asm");
+	instruction = vm.getParsing()->getNextInstruction();
 	return 0;
 }
