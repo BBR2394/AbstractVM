@@ -5,13 +5,13 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Thu Feb 20 11:55:26 2014 Bertrand-Rapello Baptiste
-// Last update Thu Feb 20 11:58:58 2014 Bertrand-Rapello Baptiste
+// Last update Thu Feb 20 17:28:38 2014 Koszyczek Laurent
 //
 
 #ifndef IOPERAND_HH_
-#define IOPERAND_HH_
+# define IOPERAND_HH_
 
-clss IOperand
+class IOperand
 {
  public:
 
@@ -24,6 +24,14 @@ clss IOperand
   virtual IOperand * operator*(const IOperand &rhs) const = 0 ;
   virtual IOperand * operator/(const IOperand &rhs) const = 0 ;
   virtual IOperand * operator%(const IOperand &rhs) const = 0 ;
+	
+};
+
+class Operand : public IOperand
+{
+public:
+	Operand();
+	~Operand();
 	
 };
 
