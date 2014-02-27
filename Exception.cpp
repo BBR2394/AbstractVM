@@ -12,12 +12,12 @@
 
 Exception::Exception(const std::string & msg)
 {
-  this->msg = msg;
+  this->_msg = msg;
 }
 
 Exception::~Exception()
 {
-
+	delete _msg;
 }
 
 SyntaxErrorException::SyntaxErrorException(const std::string & msg) throw()
@@ -36,7 +36,6 @@ BadParameterException::BadParameterException(const std::string & msg) throw()
 
 BadParameterException::~BadParameterException()
 {
-
 }
 
 DivByZeroException::DivByZeroException(const std::string & msg) throw()

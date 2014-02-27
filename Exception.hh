@@ -16,7 +16,7 @@
 class Exception : public std::exception
 {
 protected:
-	std::string			msg;
+	std::string			_msg;
 
 public:
 	Exception(const std::string & msg) throw();
