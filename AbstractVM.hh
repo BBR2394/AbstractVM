@@ -29,6 +29,7 @@ public:
 	
 private:
 	Memory		_memory;
+	Calculator  _machine;
 
 };
 
