@@ -11,16 +11,6 @@
 #ifndef ABSTRACTVM_HH_
 # define ABSTRACTVM_HH_
 
-typedef enum
-{
-	INT8,
-	INT16,
-	INT32,
-	FLOAT,
-	DOUBLE,
-	UNDEF
-} eOperandType;
-
 class AbstractVM
 {
 public:
