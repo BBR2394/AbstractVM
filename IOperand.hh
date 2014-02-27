@@ -29,11 +29,11 @@ class IOperand
   virtual int getPrecision() const = 0;
   virtual eOperandType getType() const = 0;
 
-  virtual IOperand    *operator+(const IOperand &rhs) const = 0 ;
-  virtual IOperand    *operator-(const IOperand &rhs) const = 0 ;
-  virtual IOperand    *operator*(const IOperand &rhs) const = 0 ;
-  virtual IOperand    *operator/(const IOperand &rhs) const = 0 ;
-  virtual IOperand    *operator%(const IOperand &rhs) const = 0 ;
+  virtual IOperand    *operator+(const IOperand &rhs) const = 0;
+  virtual IOperand    *operator-(const IOperand &rhs) const = 0;
+  virtual IOperand    *operator*(const IOperand &rhs) const = 0;
+  virtual IOperand    *operator/(const IOperand &rhs) const = 0;
+  virtual IOperand    *operator%(const IOperand &rhs) const = 0;
 	
 };
 
@@ -96,7 +96,5 @@ class Int8 : public AOperand<char>
       Double(const std::string & val);
       ~Double();
   };
-
-
 
 #endif

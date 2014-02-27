@@ -6,6 +6,7 @@ class Instruction
 private:
 	std::string 		_name;
 	Operand				_operand;
+
 public:
 	Instruction();
 	Instruction(const std::string &str);

@@ -20,18 +20,18 @@ Exception::~Exception()
 
 }
 
-SyntaxErrorException::SyntaxErrorException(const std::string & msg)
+SyntaxErrorException::SyntaxErrorException(const std::string & msg) throw()
+: VMException(std::string("Syntax Error Exception: ") + msg)
 {
-  this->msg = "SyntaxErrorException: " + msg;
 }
 
 SyntaxErrorException::~SyntaxErrorException()
 {
 }
 
-BadParameterException::BadParameterException(const std::string & msg)
+BadParameterException::BadParameterException(const std::string & msg) throw()
+: VMException(std::string("Bad Parameter Exception: ") + msg)
 {
-  this->msg = "BadParameterException: " + msg;
 }
 
 BadParameterException::~BadParameterException()
@@ -39,9 +39,9 @@ BadParameterException::~BadParameterException()
 
 }
 
-DivByZeroException::DivByZeroException(const std::string & msg)
+DivByZeroException::DivByZeroException(const std::string & msg) throw()
+: VMException(std::string("Div By Zero Exception: ") + msg)
 {
-  this->msg = "DivByZeroException: " + msg;
 }
 
 DivByZeroException::~DivByZeroException()

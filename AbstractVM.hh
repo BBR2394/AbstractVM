@@ -11,6 +11,9 @@
 #ifndef ABSTRACTVM_HH_
 # define ABSTRACTVM_HH_
 
+# include "Memory.hh"
+# include "Calculator.hh"
+
 class AbstractVM
 {
 public:
