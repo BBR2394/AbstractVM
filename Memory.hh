@@ -5,11 +5,13 @@
 // Login   <koszyc_l@epitech.net>
 // 
 // Started on  Thu Feb 27 02:15:45 2014 Koszyczek Laurent
-// Last update Thu Feb 27 02:15:46 2014 Koszyczek Laurent
+// Last update Thu Feb 27 16:59:22 2014 Bertrand-Rapello Baptiste
 //
 
 #ifndef MEMORY_HH_
 # define MEMORY_HH_
+
+# include	"IOperand.hh"
 
 class Memory
 {

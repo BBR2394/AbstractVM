@@ -1,6 +1,8 @@
 #ifndef INSTRUCTION_HH_
 # define INSTRUCTION_HH_
 
+# include "IOperand.hh"
+
 class Instruction
 {
 private:

@@ -11,7 +11,9 @@
 #ifndef ABSTRACTVM_HH_
 # define ABSTRACTVM_HH_
 
+# include "Parsing.hh"
 # include "Memory.hh"
+# include "Instruction.hh"
 
 class AbstractVM
 {
