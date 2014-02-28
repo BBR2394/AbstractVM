@@ -9,3 +9,40 @@
 //
 
 #include	"Parsing.hh"
+
+Parsing::Parsing()
+{
+
+}
+
+Parsing::Parsing(const std::string &str)
+{
+
+}
+
+Parsing::~Parsing()
+{
+
+}
+
+void			Parsing::setFile(std::string const str)
+{
+	_filepath = str;
+}
+
+std::string		*Parsing::getFile(void) const
+{
+	return _filepath;
+}
+
+char			Parsing::checkLine(const std::string &str)
+{
+
+}
+
+Instruction		*Parsing::getNextInstruction()
+{
+	Instruction 	*inst;
+
+	inst = new Instruction();
+}
