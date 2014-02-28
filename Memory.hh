@@ -19,8 +19,8 @@ public:
 	Memory();
 	~Memory();
 
-	void					push(Operand::IOperand * op);
-	Operand::IOperand*  	getTopOperand() const;
+	void					push(Operand * op);
+	Operand 				*getTopOperand() const;
 	void					pop();
 	void					dump();
 

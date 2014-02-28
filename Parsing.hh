@@ -11,6 +11,9 @@
 #ifndef PARSING_HH_
 # define PARSING_HH_
 
+# include <string>
+# include "Instruction.hh"
+
 class Parsing
 {
 private:

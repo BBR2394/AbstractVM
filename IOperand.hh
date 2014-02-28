@@ -48,7 +48,6 @@ protected:
 
 public:
 	Operand(const std::string name, eOperandType type, int precision);
-	~Operand();
 
   virtual std::string const & toString() const;
   virtual int getPrecision() const;
@@ -59,7 +58,7 @@ public:
   virtual IOperand    *operator*(const IOperand &rhs) const;
   virtual IOperand    *operator/(const IOperand &rhs) const;
   virtual IOperand    *operator%(const IOperand &rhs) const;
-  virtual ~Operand();
+  virtual             ~Operand();
 };
 
 class Int8 : public Operand<char>
