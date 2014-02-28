@@ -5,7 +5,7 @@
 // Login   <koszyc_l@epitech.net>
 // 
 // Started on  Fri Feb 28 11:37:05 2014 Koszyczek Laurent
-// Last update Fri Feb 28 11:37:06 2014 Koszyczek Laurent
+// Last update Fri Feb 28 16:36:28 2014 Bertrand-Rapello Baptiste
 //
 
 #ifndef PARSING_HH_
@@ -18,7 +18,7 @@ class Parsing
 {
 private:
 	std::string			_filepath;
-
+	std::ifstream			fd_file;
 public:
 	Parsing();
 	Parsing(const std::string &str);
