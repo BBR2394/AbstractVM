@@ -9,3 +9,50 @@
 //
 
 #include "IOperand.hh"
+
+Int8::Int8(const std::string & val)
+{
+
+}
+Int8::~Int8()
+{
+}
+
+Int16::Int16(const std::string & val)
+{
+
+}
+
+Int16::~Int16()
+{
+
+}
+
+Int32::Int32(const std::string & val)
+{
+
+}
+
+Int32::~Int32()
+{
+
+}
+
+Float::Float(const std::string & val)
+{
+
+}
+Float::~Float()
+{
+
+}
+
+Double::Double(const std::string & val)
+{
+
+}
+
+Double::~Double()
+{
+
+}

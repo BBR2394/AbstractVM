@@ -62,35 +62,35 @@ public:
   virtual ~Operand();
 };
 
-class Int8 : public AOperand<char>
+class Int8 : public Operand<char>
   {
     public:
       Int8(const std::string & val);
       ~Int8();
   };
 
-  class Int16 : public AOperand<short>
+  class Int16 : public Operand<short>
   {
     public:
       Int16(const std::string & val);
       ~Int16();
   };
 
-  class Int32 : public AOperand<int>
+  class Int32 : public Operand<int>
   {
     public:
       Int32(const std::string & val);
       ~Int32();
   };
 
-  class Float : public AOperand<float>
+  class Float : public Operand<float>
   {
     public:
       Float(const std::string & val);
       ~Float();
   };
 
-  class Double : public AOperand<double>
+  class Double : public Operand<double>
   {
     public:
       Double(const std::string & val);
