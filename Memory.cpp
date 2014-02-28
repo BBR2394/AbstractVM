@@ -9,3 +9,38 @@
 //
 
 #include	"Memory.hh"
+
+Memory::Memory()
+{
+
+}
+
+Memory::Memory(const Memory &obj)
+{
+	_stack = obj._stack;
+}
+
+Memory::~Memory()
+{
+
+}
+
+void					Memory::push(IOperand & op)
+{
+	_stack.push(op);
+}
+
+IOperand 				*Memory::getTopOperand() const
+{
+	return _stack.top();
+}
+
+void					Memory::pop()
+{
+	_stack.pop();
+}
+
+void					Memory::dump()
+{
+	// Display memory
+}

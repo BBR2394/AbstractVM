@@ -9,3 +9,44 @@
 //
 
 #include	"Instruction.hh"
+
+Instruction::Instruction()
+{
+
+}
+
+Instruction::Instruction(const std::string &str)
+{
+	_name = str;
+}
+
+Instruction::Instruction(const std::string &str, IOperand &ope)
+{
+	_name = str;
+	_operand = ope;
+}
+
+Instruction::~Instruction()
+{
+
+}
+
+void				Instruction::setName(const std::string &str)
+{
+	_name = str;
+}
+
+void				Instruction::setOperand(const IOperand &op)
+{
+	_operand = ope;
+}
+
+IOperand 			*Instruction::getOperand(void)
+{
+	return ope;
+}
+
+std::string			Instruction::getName(void) const
+{
+	return _name;
+}

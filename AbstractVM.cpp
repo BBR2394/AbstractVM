@@ -10,3 +10,38 @@
 
 #include "AbstractVM.hh"
 
+AbstractVM::AbstractVM()
+{
+}
+
+AbstractVM::~AbstractVM()
+{
+	delete _memory;
+	delete _file;
+}
+
+void		AbstractVM::setMemory(Memory const &memory)
+{
+	_memory = memory;
+}
+
+void		AbstractVM::setFile(Parsing const &file)
+{
+	_file = file;
+}
+
+Memory		*AbstractVM::getMemory(void) const
+{
+	return &_memory;
+}
+
+Parsing		*AbstractVM::getParsing(void) const
+{
+	return &_file;
+}
+
+
+void		AbstractVM::executeInstruction(Instruction &instruct)
+{
+
+}

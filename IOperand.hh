@@ -48,7 +48,7 @@ protected:
 
 public:
 	Operand(const std::string name, eOperandType type, int precision);
-
+  virtual             ~Operand();
   virtual std::string const & toString() const;
   virtual int getPrecision() const;
   virtual eOperandType getType() const;
@@ -58,7 +58,7 @@ public:
   virtual IOperand    *operator*(const IOperand &rhs) const;
   virtual IOperand    *operator/(const IOperand &rhs) const;
   virtual IOperand    *operator%(const IOperand &rhs) const;
-  virtual             ~Operand();
+
 };
 
 class Int8 : public Operand<char>
@@ -95,5 +95,83 @@ class Int8 : public Operand<char>
       Double(const std::string & val);
       ~Double();
   };
+
+  /*********************/
+  template<typename T>
+    class Converter
+    {
+      public:
+      static T const           convertNameToValue(const std::string &name)
+      {
+        T   value;
+        std::stringstream conv;
+        conv << name;
+        conv >> value;
+        return (value);
+      }
+
+      static std::string const  convertValueToName(const T &val)
+      {
+        std::string name;
+        std::stringstream conv;
+        conv << val;
+        conv >> name;
+        return (name);
+      }
+    };
+
+  template<>
+    class Converter<char>
+    {
+      public:
+      static char        convertNameToValue(const std::string &name)
+      {
+        int number;
+        std::stringstream conv;
+        conv << name;
+        conv >> number;
+        return ((char) number);
+      }
+
+      static std::string const    convertValueToName(char &val)
+      {
+        std::string name;
+        std::stringstream conv;
+        conv << (int) val;
+        conv >> name;
+        return (name);
+      }
+    };
+
+  template <class T>
+    class Modulo
+    {
+      public:
+        static T modulo(const T &a, const T &b)
+        {
+          return (a % b);
+        }
+    };
+
+  template <>
+    class Modulo<float>
+    {
+      public:
+        static float modulo(const float &a, const float &b)
+        {
+          return (std::fmod(a, b));
+        }
+    };
+
+  template <>
+    class Modulo<double>
+    {
+      public:
+        static double modulo(const double &a, const double &b)
+        {
+          return (std::fmod(a, b));
+        }
+    };
+    /*****************/
 
 #endif

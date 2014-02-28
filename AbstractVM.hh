@@ -26,7 +26,7 @@ void		setFile(Parsing const &file);
 Memory		*getMemory(void) const;
 Parsing		*getParsing(void) const;
 
-void		executeInstruction(Instruction const &instruct);
+void		executeInstruction(Instruction &instruct);
 	
 private:
 	Memory		_memory;

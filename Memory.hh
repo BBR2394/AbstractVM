@@ -11,21 +11,23 @@
 #ifndef MEMORY_HH_
 # define MEMORY_HH_
 
+# include	<stack>
 # include	"IOperand.hh"
 
 class Memory
 {
 public:
 	Memory();
+	Memory(const Memory &obj);
 	~Memory();
 
-	void					push(Operand * op);
-	Operand 				*getTopOperand() const;
+	void					push(IOperand & op);
+	IOperand 				*getTopOperand() const;
 	void					pop();
 	void					dump();
 
 private:
-	std::stack<Operand::IOperand *> stack;
+	std::stack<IOperand *> _stack;
 };
 
 #endif /* MEMORY_HH_ */

@@ -17,6 +17,6 @@ int		main(int ac, char **av)
 
 	vm.getParsing()->setFile("test.asm");
 	instruction = vm.getParsing()->getNextInstruction();
-	vm->executeInstruction(instruction);
+	vm.executeInstruction(instruction);
 	return 0;
 }

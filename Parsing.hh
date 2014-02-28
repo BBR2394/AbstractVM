@@ -27,7 +27,7 @@ public:
 	void			setFile(std::string const str);
 	std::string		*getFile(void) const;
 	char			checkLine(const std::string &str);
-	Instruction		*getNextInstruction(const std::string &str);
+	Instruction		*getNextInstruction();
 
 };
 
