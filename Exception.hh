@@ -20,7 +20,7 @@ protected:
 
 public:
 	Exception(const std::string & msg) throw();
-	virtual const char *Message() const throw();
+	virtual const char *what() const throw();
 	~Exception() throw();
 };
 
