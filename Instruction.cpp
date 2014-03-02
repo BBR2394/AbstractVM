@@ -23,7 +23,10 @@ Instruction::Instruction(const std::string &str)
 Instruction::Instruction(const std::string &str, IOperand &ope)
 {
 	_name = str;
-	_operand = ope;
+	/*_operand.val = ope.val;
+	_operand.name = ope.name;
+	_operand.type = ope.type;
+	_operand.precision = ope.precision;*/
 }
 
 Instruction::~Instruction()
@@ -36,14 +39,14 @@ void				Instruction::setName(const std::string &str)
 	_name = str;
 }
 
-void				Instruction::setOperand(const IOperand &op)
+void				Instruction::addOperand(const IOperand &op)
 {
-	_operand = ope;
+	//_operand = op;
 }
 
 IOperand 			*Instruction::getOperand(void)
 {
-	return ope;
+	return NULL;
 }
 
 std::string			Instruction::getName(void) const

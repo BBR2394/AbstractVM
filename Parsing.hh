@@ -11,14 +11,15 @@
 #ifndef PARSING_HH_
 # define PARSING_HH_
 
+# include <map>
 # include <string>
 # include "Instruction.hh"
 
 class Parsing
 {
 private:
-	std::string			_filepath;
-	std::ifstream			fd_file;
+	std::map<std::string, Instruction *> _task;
+
 public:
 	Parsing();
 	Parsing(const std::string &str);
@@ -26,8 +27,9 @@ public:
 
 	void			setFile(std::string const str);
 	std::string		*getFile(void) const;
-	char			checkLine(const std::string &str);
+	char			checkLine(const std::string &str, int nline);
 	Instruction		*getNextInstruction();
+	void			readFile(std::string const &str);
 
 };
 

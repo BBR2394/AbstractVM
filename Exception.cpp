@@ -10,40 +10,61 @@
 
 #include "Exception.hh"
 
-Exception::Exception(const std::string & msg)
+Exception::Exception(const std::string & msg) throw()
 {
   this->_msg = msg;
 }
 
-Exception::~Exception()
+Exception::~Exception() throw()
 {
-	delete _msg;
 }
 
 SyntaxErrorException::SyntaxErrorException(const std::string & msg) throw()
-: VMException(std::string("Syntax Error Exception: ") + msg)
+: Exception::Exception(std::string("Syntax Error Exception: ") + msg)
 {
 }
 
-SyntaxErrorException::~SyntaxErrorException()
+SyntaxErrorException::~SyntaxErrorException() throw()
 {
 }
 
 BadParameterException::BadParameterException(const std::string & msg) throw()
-: VMException(std::string("Bad Parameter Exception: ") + msg)
+: Exception::Exception(std::string("Bad Parameter Exception: ") + msg)
 {
 }
 
-BadParameterException::~BadParameterException()
+BadParameterException::~BadParameterException() throw()
 {
 }
 
 DivByZeroException::DivByZeroException(const std::string & msg) throw()
-: VMException(std::string("Div By Zero Exception: ") + msg)
+: Exception::Exception(std::string("Div By Zero Exception: ") + msg)
 {
 }
 
-DivByZeroException::~DivByZeroException()
+DivByZeroException::~DivByZeroException() throw()
+{
+
+}
+
+FileOpeningException::FileOpeningException(const std::string &msg) throw()
+: Exception::Exception(std::string("File Opening Exception: " ) + msg)
+{
+
+}
+
+FileOpeningException::~FileOpeningException() throw()
+{
+
+}
+
+OverflowException::OverflowException(const std::string &msg) throw()
+: Exception::Exception(std::string("Overflow Exception: ") + msg)
+{
+
+}
+
+OverflowException::~OverflowException() throw()
 {
 
 }

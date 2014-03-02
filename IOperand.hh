@@ -11,6 +11,10 @@
 #ifndef IOPERAND_HH_
 # define IOPERAND_HH_
 
+# include <sstream>
+# include <cmath>
+# include "Exception.hh"
+
 typedef enum
 {
   INT8,
@@ -29,12 +33,12 @@ class IOperand
   virtual int getPrecision() const = 0;
   virtual eOperandType getType() const = 0;
 
-  virtual IOperand    *operator+(const IOperand &rhs) const = 0;
-  virtual IOperand    *operator-(const IOperand &rhs) const = 0;
-  virtual IOperand    *operator*(const IOperand &rhs) const = 0;
-  virtual IOperand    *operator/(const IOperand &rhs) const = 0;
-  virtual IOperand    *operator%(const IOperand &rhs) const = 0;
-	
+  virtual IOperand    *operator+(const IOperand &obj) const = 0;
+  virtual IOperand    *operator-(const IOperand &obj) const = 0;
+  virtual IOperand    *operator*(const IOperand &obj) const = 0;
+  virtual IOperand    *operator/(const IOperand &obj) const = 0;
+  virtual IOperand    *operator%(const IOperand &obj) const = 0;
+	virtual IOperand    *operator=(const IOperand &obj) const = 0;
 };
 
 template<typename T>
@@ -47,17 +51,18 @@ protected:
     int           precision;
 
 public:
-	Operand(const std::string name, eOperandType type, int precision);
+	Operand(const std::string &name, eOperandType type, int precision);
   virtual             ~Operand();
   virtual std::string const & toString() const;
   virtual int getPrecision() const;
   virtual eOperandType getType() const;
 
-  virtual IOperand    *operator+(const IOperand &rhs) const;
-  virtual IOperand    *operator-(const IOperand &rhs) const;
-  virtual IOperand    *operator*(const IOperand &rhs) const;
-  virtual IOperand    *operator/(const IOperand &rhs) const;
-  virtual IOperand    *operator%(const IOperand &rhs) const;
+  virtual IOperand    *operator+(const IOperand &obj) const;
+  virtual IOperand    *operator-(const IOperand &obj) const;
+  virtual IOperand    *operator*(const IOperand &obj) const;
+  virtual IOperand    *operator/(const IOperand &obj) const;
+  virtual IOperand    *operator%(const IOperand &obj) const;
+  virtual IOperand    *operator=(const IOperand &obj) const;
 
 };
 
@@ -96,7 +101,6 @@ class Int8 : public Operand<char>
       ~Double();
   };
 
-  /*********************/
   template<typename T>
     class Converter
     {
@@ -172,6 +176,5 @@ class Int8 : public Operand<char>
           return (std::fmod(a, b));
         }
     };
-    /*****************/
 
 #endif

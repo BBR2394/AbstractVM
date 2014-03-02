@@ -12,11 +12,12 @@
 # define GRAMMAR_HH_
 
 # include <map>
+# include <string>
 
 class Grammar
 {
 private:
-	std::std::map<std::string, char> _keyword;
+	std::map<std::string, char> _keyword;
 
 public:
 	Grammar();

@@ -23,8 +23,8 @@ public:
 
 void		setMemory(Memory const &memory);
 void		setFile(Parsing const &file);
-Memory		*getMemory(void) const;
-Parsing		*getParsing(void) const;
+Memory		*getMemory(void);
+Parsing		*getParsing(void);
 
 void		executeInstruction(Instruction &instruct);
 	

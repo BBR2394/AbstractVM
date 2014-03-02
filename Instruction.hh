@@ -1,13 +1,15 @@
 #ifndef INSTRUCTION_HH_
 # define INSTRUCTION_HH_
 
+# include <stack>
 # include "IOperand.hh"
+
 
 class Instruction
 {
 private:
-	std::string 		_name;
-	IOperand			_operand;
+	std::string 			_name;
+	std::stack<IOperand *>		_operand;
 
 public:
 	Instruction();
@@ -16,7 +18,7 @@ public:
 	~Instruction();
 
 	void				setName(const std::string &str);
-	void				setOperand(const IOperand &op);
+	void				addOperand(const IOperand &op);
 	IOperand 			*getOperand(void);
 	std::string			getName(void) const;
 

@@ -11,6 +11,7 @@
 #ifndef EXCEPTION_HH_
 # define EXCEPTION_HH_
 
+# include <string>
 # include <exception>
 
 class Exception : public std::exception
@@ -45,5 +46,20 @@ public:
 	~DivByZeroException() throw();
 };
 
+class FileOpeningException : public Exception
+{
+public:
+	FileOpeningException(const std::string & msg) throw();
+	~FileOpeningException() throw();
+	
+};
 
+class OverflowException : public Exception
+{
+public:
+	OverflowException(const std::string & msg) throw();
+	~OverflowException() throw();
+	
+};
 
+#endif

@@ -16,8 +16,6 @@ AbstractVM::AbstractVM()
 
 AbstractVM::~AbstractVM()
 {
-	delete _memory;
-	delete _file;
 }
 
 void		AbstractVM::setMemory(Memory const &memory)
@@ -30,12 +28,12 @@ void		AbstractVM::setFile(Parsing const &file)
 	_file = file;
 }
 
-Memory		*AbstractVM::getMemory(void) const
+Memory		*AbstractVM::getMemory(void)
 {
 	return &_memory;
 }
 
-Parsing		*AbstractVM::getParsing(void) const
+Parsing		*AbstractVM::getParsing(void)
 {
 	return &_file;
 }

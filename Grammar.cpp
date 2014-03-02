@@ -8,7 +8,7 @@
 // Last update Thu Feb 27 02:15:00 2014 Koszyczek Laurent
 //
 
-#include "Grammar.hpp"
+#include "Grammar.hh"
 
 Grammar::Grammar()
 {
@@ -20,12 +20,11 @@ Grammar::Grammar()
 
 Grammar::Grammar(Grammar const &obj)
 {
-	_keyword = obj->_keyword;
+	_keyword = obj._keyword;
 }
 
 Grammar::~Grammar()
 {
-	delete _keyword;
 }
 
 char		Grammar::is_valid(std::string str)
