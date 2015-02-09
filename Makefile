@@ -1,35 +1,22 @@
-##
-## Makefile for  in /home/rendu
-## 
-## Made by Koszyczek Laurent
-## Login   <koszyc_l@epitech.net>
-## 
-## Started on  Mon Feb  3 18:50:11 2014 Koszyczek Laurent
-## Last update Fri Feb 28 11:57:28 2014 Koszyczek Laurent
-##
 
-CC	=	g++
+CC	=	clang++
 
-RM	=	rm -f
+NAME	=	avm	
 
-CFLAGS 	+=	-Wextra -Wall
+SRC	=	main.cpp	\
+		ObjRead.cpp
 
-SRCS 	=	main.cpp \
-		AbstractVM.cpp
+OBJ	=	$(SRC:.cpp=.o)
 
-OBJS 	= 	$(SRCS:.cpp=.o)
+all: $(NAME)
 
-NAME 	= 	avm
-
-all:		$(NAME)
-
-$(NAME):	$(OBJS)
-		$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+$(NAME): $(OBJ) 
+	$(CC) $(OBJ) -o $(NAME)
 
 clean:
-		$(RM) $(OBJS)
+	rm -f $(OBJ)
 
-fclean: 	clean
-		$(RM) $(NAME)
+fclean: clean
+	rm -f $(NAME)
 
-re: 		fclean all
+re: fclean all

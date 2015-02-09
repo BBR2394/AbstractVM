@@ -1,22 +1,21 @@
 //
-// main.cpp for abstractvm in /home/koszyc_l/Documents/blih/cpp_abstractvm
+// main.cpp for  in /home/baptiste/rendu/cpp_abstractvm
 // 
-// Made by Koszyczek Laurent
-// Login   <koszyc_l@epitech.net>
+// Made by Bertrand-Rapello Baptiste
+// Login   <bertra_l@epitech.net>
 // 
-// Started on  Wed Feb 26 18:02:05 2014 Koszyczek Laurent
-// Last update Wed Feb 26 18:02:33 2014 Koszyczek Laurent
+// Started on  Mon Feb  9 16:50:02 2015 Bertrand-Rapello Baptiste
+// Last update Mon Feb  9 18:30:55 2015 Bertrand-Rapello Baptiste
 //
 
-#include	"AbstractVM.hh"
+#include <iostream>
 
-int		main(int ac, char **av)
+#include "ObjRead.hh"
+
+int	main()
 {
-	AbstractVM 			vm;
-	Instruction			*instruction;
-
-	vm.getParsing()->setFile("test.asm");
-	instruction = vm.getParsing()->getNextInstruction();
-	vm.executeInstruction(instruction);
-	return 0;
+  ObjRead file("asm.txt");
+  std::cout << "bonjour" << std::endl;
+  std::cout << file.readASM() << std::endl;
+  return 0;
 }
