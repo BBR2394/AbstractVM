@@ -4,7 +4,8 @@ CC	=	clang++
 NAME	=	avm	
 
 SRC	=	main.cpp	\
-		ObjRead.cpp
+		ObjRead.cpp	\
+		Operand.cpp
 
 OBJ	=	$(SRC:.cpp=.o)
 

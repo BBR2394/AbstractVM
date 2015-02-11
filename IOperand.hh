@@ -5,10 +5,19 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Mon Feb  9 16:27:02 2015 Bertrand-Rapello Baptiste
-// Last update Mon Feb  9 16:30:59 2015 Bertrand-Rapello Baptiste
+// Last update Wed Feb 11 11:37:37 2015 Bertrand-Rapello Baptiste
 //
 
 #include <iostream>
+
+enum eOperandType
+  {
+    Int8,
+    Int16,
+    Int32,
+    Float,
+    Double
+  };
 
 class IOperand
 {
