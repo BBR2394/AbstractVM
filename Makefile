@@ -5,7 +5,8 @@ NAME	=	avm
 
 SRC	=	main.cpp	\
 		ObjRead.cpp	\
-		Operand.cpp
+		Operand.cpp	\
+		ProcessUnit.cpp
 
 OBJ	=	$(SRC:.cpp=.o)
 

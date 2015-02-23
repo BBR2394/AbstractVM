@@ -4,18 +4,33 @@
 // Made by Bertrand-Rapello Baptiste
 // Login   <bertra_l@epitech.net>
 // 
-// Started on  Wed Feb 11 11:50:37 2015 Bertrand-Rapello Baptiste
-// Last update Wed Feb 11 11:51:50 2015 Bertrand-Rapello Baptiste
+// Started on  Mon Feb 23 09:47:56 2015 Bertrand-Rapello Baptiste
+// Last update Mon Feb 23 09:52:36 2015 Bertrand-Rapello Baptiste
 //
 
 #include "Operand.hh"
 
-OpeInt8::OpeInt8() : _tpe(Int8)
+Int8::Int8()
 {
 
 }
 
-OpeInt8::~OpeInt8()
+Int8::~Int8()
+{
+
+}
+
+int Int8::getPrecision() const
+{
+
+}
+
+std::string const & Int8::toString() const
+{
+
+}
+
+eOperandType Int8::getType() const
 {
 
 }
