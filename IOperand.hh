@@ -5,8 +5,11 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Mon Feb  9 16:27:02 2015 Bertrand-Rapello Baptiste
-// Last update Fri Feb 20 18:11:38 2015 Bertrand-Rapello Baptiste
+// Last update Mon Feb 23 11:10:29 2015 Bertrand-Rapello Baptiste
 //
+
+#ifndef IOPERAND_HH_
+# define IOPERAND_HH_
 
 #include <iostream>
 
@@ -23,10 +26,10 @@ class IOperand
 {
 public:
 
-  virtual std::string  toString() const = 0; // Renvoie une string reprensentant l’instance
+  //virtual std::string  toString() const = 0; // Renvoie une string reprensentant l’instance
   virtual int getPrecision() const = 0; // Renvoie la precision du type de l’instance
   virtual eOperandType getType() const = 0; // Renvoie le type de l’instance. Voir plus bas
-
+  virtual std::string getV() const = 0;
   /*
   virtual IOperand *operator+(const IOperand &rhs) const = 0;
   virtual IOperand *operator-(const IOperand &rhs) const = 0;
@@ -35,7 +38,6 @@ public:
   virtual IOperand *operator%(const IOperand &rhs) const = 0;
   */
   virtual ~IOperand() {}
-
-
-
 };
+
+#endif

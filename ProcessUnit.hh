@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Thu Feb 19 14:52:29 2015 Bertrand-Rapello Baptiste
-// Last update Fri Feb 20 18:05:16 2015 Bertrand-Rapello Baptiste
+// Last update Mon Feb 23 10:19:27 2015 Bertrand-Rapello Baptiste
 //
 
 #ifndef PROCESSUNIT_HH_
@@ -14,7 +14,7 @@
 #include <iostream>
 #include <stack>
 
-#include "Operand.cpp"
+#include "Operand.hh"
 
 class ProcessUnit
 {
@@ -29,9 +29,9 @@ private:
   //IOperand *(*ptr)(const std::string &);
 
   IOperand *createInt8(const std::string & value);
-  /*
   IOperand *createInt16(const std::string & value);
   IOperand *createInt32(const std::string & value);
+  /*
   IOperand *createFloat(const std::string & value);
   IOperand *createDouble(const std::string & value);
   */
