@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Mon Feb  9 16:27:02 2015 Bertrand-Rapello Baptiste
-// Last update Mon Feb 23 11:10:29 2015 Bertrand-Rapello Baptiste
+// Last update Tue Feb 24 19:40:04 2015 Bertrand-Rapello Baptiste
 //
 
 #ifndef IOPERAND_HH_
@@ -13,30 +13,34 @@
 
 #include <iostream>
 
-enum eOperandType
-  {
-    Int8,
-    Int16,
-    Int32,
-    Float,
-    Double
-  };
+namespace OperandTpe
+{
+}
+  enum eOperandType
+    {
+      Int8,
+      Int16,
+      Int32,
+      Float,
+      Double
+    }; 
+
 
 class IOperand
 {
 public:
 
-  //virtual std::string  toString() const = 0; // Renvoie une string reprensentant l’instance
+  virtual std::string const & toString() const = 0; // Renvoie une string reprensentant l’instance
   virtual int getPrecision() const = 0; // Renvoie la precision du type de l’instance
   virtual eOperandType getType() const = 0; // Renvoie le type de l’instance. Voir plus bas
-  virtual std::string getV() const = 0;
-  /*
-  virtual IOperand *operator+(const IOperand &rhs) const = 0;
+  //virtual std::string getV() const = 0;
+  virtual IOperand *operator+(const IOperand &rhs) const = 0; 
   virtual IOperand *operator-(const IOperand &rhs) const = 0;
   virtual IOperand *operator*(const IOperand &rhs) const = 0;
+
   virtual IOperand *operator/(const IOperand &rhs) const = 0;
   virtual IOperand *operator%(const IOperand &rhs) const = 0;
-  */
+
   virtual ~IOperand() {}
 };
 

@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Thu Feb 19 14:52:29 2015 Bertrand-Rapello Baptiste
-// Last update Mon Feb 23 10:19:27 2015 Bertrand-Rapello Baptiste
+// Last update Tue Feb 24 19:39:52 2015 Bertrand-Rapello Baptiste
 //
 
 #ifndef PROCESSUNIT_HH_
@@ -37,7 +37,12 @@ private:
   */
 public:
   IOperand * createOperand(eOperandType type, const std::string & value);
+  void	add();
   void	dump();
+  void sub();
+  void mul();
+  void div();
+  void mod();
 };
 
 #endif
