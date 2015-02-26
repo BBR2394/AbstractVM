@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Thu Feb 19 14:58:26 2015 Bertrand-Rapello Baptiste
-// Last update Thu Feb 26 11:03:30 2015 Bertrand-Rapello Baptiste
+// Last update Thu Feb 26 12:07:59 2015 Bertrand-Rapello Baptiste
 //
 
 #include <cstdlib>
@@ -185,7 +185,7 @@ void ProcessUnit::div()
   std::cout << "je vais diviser " << nb1->toString() << " et " <<  nb2->toString() << "et le type " << nb1->getType() << " " << nb2->getType() << std::endl;
   if (nb1->getType() <= nb2->getType())
     {
-      res = *nb1 / *nb2;
+      res = *nb2 / *nb1;
       _pile.push(res);
     }
   else
@@ -210,7 +210,7 @@ void ProcessUnit::mod()
   std::cout << "je vais Moduler " << nb1->toString() << " et " <<  nb2->toString() << "et le type " << nb1->getType() << " " << nb2->getType() << std::endl;
   if (nb1->getType() <= nb2->getType())
     {
-      res = *nb1 % *nb2;
+      res = *nb2 % *nb1;
       _pile.push(res);
     }
   else
