@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Thu Feb 19 14:58:26 2015 Bertrand-Rapello Baptiste
-// Last update Thu Feb 26 12:07:59 2015 Bertrand-Rapello Baptiste
+// Last update Thu Feb 26 19:00:44 2015 Bertrand-Rapello Baptiste
 //
 
 #include <cstdlib>
@@ -13,6 +13,11 @@
 
 ProcessUnit::ProcessUnit()
 {
+  this->tabPtr[OperandTpe::Int8] = &ProcessUnit::createInt8;
+  this->tabPtr[OperandTpe::Int16] = &ProcessUnit::createInt16;
+  this->tabPtr[OperandTpe::Int32] = &ProcessUnit::createInt32;
+  this->tabPtr[OperandTpe::Double] = &ProcessUnit::createDouble;
+  this->tabPtr[OperandTpe::Float] = &ProcessUnit::createFloat;
 }
 
 ProcessUnit::~ProcessUnit()
@@ -22,7 +27,10 @@ ProcessUnit::~ProcessUnit()
 
 IOperand * ProcessUnit::createOperand(OperandTpe::eOperandType type, const std::string & value)
 {
-  std::cout << "CREATION dun operand  tpe : " << type << std::endl;  
+  std::cout << "CREATION dun operand  tpe : " << type << std::endl;
+  //(this->*tabPtr[type])(value);
+  //return NULL;
+
   switch (type)
     {
     case OperandTpe::Int8:
@@ -121,7 +129,8 @@ void ProcessUnit::add()
       std::cout << "le type du nouvel objet (2) " << res->getType() << std::endl;
       _pile.push(res);
     }
-
+  delete nb1;
+  delete nb2;
 }
 void ProcessUnit::sub()
 {
@@ -145,6 +154,8 @@ void ProcessUnit::sub()
       res = *nb2 -  *nb1;
       _pile.push(res);
     }
+  delete nb1;
+  delete nb2;
 }
 
 void ProcessUnit::mul()
@@ -169,6 +180,8 @@ void ProcessUnit::mul()
       res = *nb2 * *nb1;
       _pile.push(res);
     }
+  delete nb1;
+  delete nb2;
 }
 
 
@@ -195,6 +208,8 @@ void ProcessUnit::div()
       res = *nb2 / *nb1;
       _pile.push(res);
     }
+  delete nb1;
+  delete nb2;
 }
 
 void ProcessUnit::mod()
@@ -220,6 +235,8 @@ void ProcessUnit::mod()
       res = *nb2 % *nb1;
       _pile.push(res);
     }
+  delete nb1;
+  delete nb2;
 }
 
 void ProcessUnit::dump()
@@ -235,4 +252,50 @@ void ProcessUnit::dump()
       cpy.pop();
     }
   
+}
+
+void ProcessUnit::pop()
+{
+  if (_pile.empty())
+    throw ExceptOpe("pile vide (pop)");
+  _pile.pop();
+}
+
+void ProcessUnit::assert(OperandTpe::eOperandType type, const std::string & value)
+{
+  IOperand *nb1;
+  IOperand *nb2;
+
+  createOperand(type, value);
+  nb1 = _pile.top();
+  _pile.pop();
+  nb2 = _pile.top();
+
+  if ((nb1->toString() == nb2->toString()) && nb1->getType() == nb2->getType());
+  else
+    throw ExceptOpe("assert: not egale");
+  delete nb1;
+}
+
+void ProcessUnit::print()
+{
+  IOperand  *nb1;
+  
+  char	nb;
+
+  try
+    {
+      this->assert(OperandTpe::Int8, _pile.top()->toString());
+    }
+  catch (const ExceptOpe& e)
+    {
+      throw ExceptOpe("cannot print");
+    }
+  nb1 = _pile.top();
+  std::cout << nb1->toString() << std::endl;
+  std::istringstream convert(nb1->toString());
+  //convert.str(nb1->toString());
+  convert >> nb;
+  std::cout << (int)nb << std::endl;
+
 }

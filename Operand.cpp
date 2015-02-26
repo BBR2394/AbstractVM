@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Mon Feb 23 09:47:56 2015 Bertrand-Rapello Baptiste
-// Last update Thu Feb 26 12:00:41 2015 Bertrand-Rapello Baptiste
+// Last update Thu Feb 26 15:39:30 2015 Bertrand-Rapello Baptiste
 //
 
 #include <cstdlib>
@@ -60,9 +60,13 @@ IOperand *Int8::operator+(const IOperand &rhs) const
   std::istringstream convert(rhs.toString());
   std::ostringstream chartostring;
   int res;
+  //int flow;
 
   convert >> res;  
   chartostring << (char)res + this->getValue();
+  //flow = res + (int)this->getValue();
+  //if (flow != ((char)res + this->getValue()))
+    //  throw ExceptOpe("overflow");
   newo = new Int8(chartostring.str());
   return newo;
 }
@@ -86,9 +90,13 @@ IOperand *Int8::operator*(const IOperand &rhs) const
   std::istringstream convert(rhs.toString());
   std::ostringstream chartostring;
   int res;
+  //int	flow;
 
   convert >> res;
   chartostring << this->getValue() * (char)res;
+  /*flow = res + (int)this->getValue();
+  if (flow != ((char)res * this->getValue()))
+    throw ExceptOpe("overflow");*/
   newo = new Int8(chartostring.str());
   return newo;
 }
@@ -421,10 +429,18 @@ IOperand *Double::operator%(const IOperand &rhs) const
   std::istringstream convert(rhs.toString());
   std::ostringstream chartostring;
   double res;
+  int	nb1, nb2;
 
   convert >> res;
+  nb1 = (int)res;
+  nb2 = (int)this->getValue();
+  if ((double)nb1 != res)
+    throw ExceptOpe("modulus can be make only on a integer");
+  else if ((double)nb2 != (double)this->getValue())
+    throw ExceptOpe("modulus can be make only on a integer"); 
+
   //pour le double le modulo n'est pas comme cela
-  //  chartostring << this->getValue() % (double)res;
+  chartostring << (int)this->getValue() % (int)res;
   newo = new Double(chartostring.str());
   return newo;
 }
@@ -527,9 +543,16 @@ IOperand *Float::operator%(const IOperand &rhs) const
   std::istringstream convert(rhs.toString());
   std::ostringstream chartostring;
   float res;
+  int   nb1, nb2;
 
   convert >> res;
-  //chartostring << this->getValue() % (float)res;
+  nb1 = (int)res;
+  nb2 = (int)this->getValue();
+  if ((float)nb1 != res)
+    throw ExceptOpe("modulus can be make only on a integer");
+  else if ((float)nb2 != (float)this->getValue())
+    throw ExceptOpe("modulus can be make only on a integer");
+  chartostring << (int)this->getValue() % (int)res;
   newo = new Float(chartostring.str());
   return newo;
 }

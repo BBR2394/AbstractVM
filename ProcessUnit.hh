@@ -5,13 +5,14 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Thu Feb 19 14:52:29 2015 Bertrand-Rapello Baptiste
-// Last update Wed Feb 25 17:36:07 2015 Bertrand-Rapello Baptiste
+// Last update Thu Feb 26 18:55:54 2015 Bertrand-Rapello Baptiste
 //
 
 #ifndef PROCESSUNIT_HH_
 # define PROCESSUNIT_HH_
 
 #include <iostream>
+#include <map>
 #include <stack>
 
 #include "Operand.hh"
@@ -24,6 +25,10 @@ public:
 
 private:
   std::stack<IOperand*> _pile;
+
+  std::map<OperandTpe::eOperandType, IOperand *(ProcessUnit::*)(const std::string &)> tabPtr;
+  //deuxieme tentative de pointeur sur fonction membre
+  //IOperand *(ProcessUnit::*)(const std::string &);
 
   //tentative de pointeur sur membre ...
   //IOperand *(*ptr)(const std::string &);
@@ -42,6 +47,9 @@ public:
   void mul();
   void div();
   void mod();
+  void pop();
+  void assert(OperandTpe::eOperandType type, const std::string & value);
+  void print();
 };
 
 #endif
