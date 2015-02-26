@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Mon Feb 23 09:44:21 2015 Bertrand-Rapello Baptiste
-// Last update Tue Feb 24 21:22:19 2015 Bertrand-Rapello Baptiste
+// Last update Wed Feb 25 18:40:43 2015 Bertrand-Rapello Baptiste
 //
 
 #ifndef OPERAND_HH_
@@ -15,6 +15,7 @@
 #include <string>
 #include <sstream>
 
+#include "Exception.hh"
 #include "IOperand.hh"
 
 class Int8 : public IOperand
@@ -24,7 +25,7 @@ public:
   ~Int8();
 
 private:
-  eOperandType _tpe;
+  OperandTpe::eOperandType _tpe;
   std::string _repre;
   int   _precision;
   char _value;
@@ -32,7 +33,7 @@ private:
 public:
   std::string const & toString() const;
   int getPrecision() const;
-  eOperandType getType() const;
+  OperandTpe::eOperandType getType() const;
   char	getValue() const;
   IOperand *operator+(const IOperand &rhs) const;
   IOperand *operator-(const IOperand &rhs) const;
@@ -48,7 +49,7 @@ public:
   ~Int16();
 
 private:
-  eOperandType _tpe;
+  OperandTpe::eOperandType _tpe;
   std::string _repre;
   int   _precision;
   short _value;
@@ -56,7 +57,7 @@ private:
 public:
   std::string const & toString() const;
   int getPrecision() const;
-  eOperandType getType() const;
+  OperandTpe::eOperandType getType() const;
   short getValue() const;
   IOperand *operator+(const IOperand &rhs) const;
   IOperand *operator-(const IOperand &rhs) const;
@@ -72,7 +73,7 @@ public:
   ~Int32();
 
 private:
-  eOperandType _tpe;
+  OperandTpe::eOperandType _tpe;
   std::string _repre;
   int   _precision;
   int _value;
@@ -80,7 +81,7 @@ private:
 public:
   std::string const & toString() const;
   int getPrecision() const;
-  eOperandType getType() const;
+  OperandTpe::eOperandType getType() const;
   int	getValue() const;
   IOperand *operator+(const IOperand &rhs) const;
   IOperand *operator-(const IOperand &rhs) const;
@@ -88,5 +89,53 @@ public:
   IOperand *operator/(const IOperand &rhs) const;
   IOperand *operator%(const IOperand &rhs) const;
 };
+
+class Double : public IOperand
+{
+public:
+  Double(const std::string & v);
+  ~Double();
+private:
+  OperandTpe::eOperandType _tpe;
+  std::string _repre;
+  int   _precision;
+  double _value;
+
+public:
+  std::string const & toString() const;
+  int getPrecision() const;
+  OperandTpe::eOperandType getType() const;
+  double   getValue() const;
+  IOperand *operator+(const IOperand &rhs) const;
+  IOperand *operator-(const IOperand &rhs) const;
+  IOperand *operator*(const IOperand &rhs) const;
+  IOperand *operator/(const IOperand &rhs) const;
+  IOperand *operator%(const IOperand &rhs) const;
+};
+
+class Float : public IOperand
+{
+public:
+  Float(const std::string & v);
+  ~Float();
+private:
+  OperandTpe::eOperandType _tpe;
+  std::string _repre;
+  int   _precision;
+  float _value;
+
+public:
+  std::string const & toString() const;
+  int getPrecision() const;
+  OperandTpe::eOperandType getType() const;
+  float   getValue() const;
+
+  IOperand *operator+(const IOperand &rhs) const;
+  IOperand *operator-(const IOperand &rhs) const;
+  IOperand *operator*(const IOperand &rhs) const;
+  IOperand *operator/(const IOperand &rhs) const;
+  IOperand *operator%(const IOperand &rhs) const;
+};
+
 
 #endif

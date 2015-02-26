@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Thu Feb 19 14:52:29 2015 Bertrand-Rapello Baptiste
-// Last update Tue Feb 24 19:39:52 2015 Bertrand-Rapello Baptiste
+// Last update Wed Feb 25 17:36:07 2015 Bertrand-Rapello Baptiste
 //
 
 #ifndef PROCESSUNIT_HH_
@@ -31,12 +31,11 @@ private:
   IOperand *createInt8(const std::string & value);
   IOperand *createInt16(const std::string & value);
   IOperand *createInt32(const std::string & value);
-  /*
   IOperand *createFloat(const std::string & value);
   IOperand *createDouble(const std::string & value);
-  */
+
 public:
-  IOperand * createOperand(eOperandType type, const std::string & value);
+  IOperand * createOperand(OperandTpe::eOperandType type, const std::string & value);
   void	add();
   void	dump();
   void sub();

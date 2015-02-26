@@ -5,11 +5,12 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Mon Feb  9 16:50:02 2015 Bertrand-Rapello Baptiste
-// Last update Tue Feb 24 21:45:17 2015 Bertrand-Rapello Baptiste
+// Last update Thu Feb 26 11:06:22 2015 Bertrand-Rapello Baptiste
 //
 
 #include <iostream>
 
+#include "Exception.hh"
 #include "ObjRead.hh"
 #include "ProcessUnit.hh"
 
@@ -21,31 +22,40 @@ int	main()
 
   std::cout << "bonjour" << std::endl;
   std::cout << file.readASM() << std::endl;
-
-  cpu.createOperand(Int16, "-42");
-  cpu.createOperand(Int8, "83");
-  std::cout << "---DUMP---" << std::endl;
-  cpu.dump();
-  std::cout << "----------" << std::endl;
-  cpu.add();
-  std::cout << "---DUMP---" << std::endl;
-  cpu.dump();
-  std::cout << "----------" << std::endl;
-  cpu.createOperand(Int8, "83");
-  cpu.sub();
-  std::cout << "---DUMP---" << std::endl;
-  cpu.dump();
-  std::cout << "----------" << std::endl;
-  cpu.createOperand(Int32, "-42");
-  cpu.createOperand(Int32, "42");
-  cpu.mul();
-  std::cout << "---DUMP---" << std::endl;
-  cpu.dump();
-  std::cout << "----------" << std::endl;
-  cpu.createOperand(Int32, "42");
-  cpu.mod();
-  std::cout << "---DUMP---" << std::endl;
-  cpu.dump();
-  std::cout << "----------" << std::endl;
+  try
+    {
+      cpu.createOperand(OperandTpe::Int16, "-42");
+      //cpu.add();
+      cpu.createOperand(OperandTpe::Int8, "258");
+      std::cout << "---DUMP---" << std::endl;
+      cpu.dump();
+      std::cout << "----------" << std::endl;
+      cpu.add();
+      std::cout << "---DUMP---" << std::endl;
+      cpu.dump();
+      std::cout << "----------" << std::endl;
+      cpu.createOperand(OperandTpe::Int8, "83");
+      cpu.sub();
+      std::cout << "---DUMP---" << std::endl;
+      cpu.dump();
+      std::cout << "----------" << std::endl;
+      std::cout << "il faut que je verifie mais il semlble y avoir un probleme avec la division et le modulo " << std::endl;
+      cpu.createOperand(OperandTpe::Int32, "-42");
+      cpu.createOperand(OperandTpe::Int32, "42");
+      cpu.mul();
+      std::cout << "---DUMP---" << std::endl;
+      cpu.dump();
+      std::cout << "----------" << std::endl;
+      cpu.createOperand(OperandTpe::Int32, "42");
+      cpu.mod();
+      std::cout << "---DUMP---" << std::endl;
+      cpu.dump();
+      std::cout << "----------" << std::endl;
+    }
+  catch (const ExceptOpe& e)
+    {
+      std::cout << "an exception has been thrown :-/ : " << e.getComponent() << std::endl;
+      return -1;
+    }
   return 0;
 }

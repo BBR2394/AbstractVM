@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Thu Feb 19 14:58:26 2015 Bertrand-Rapello Baptiste
-// Last update Tue Feb 24 21:45:49 2015 Bertrand-Rapello Baptiste
+// Last update Thu Feb 26 11:03:30 2015 Bertrand-Rapello Baptiste
 //
 
 #include <cstdlib>
@@ -20,19 +20,25 @@ ProcessUnit::~ProcessUnit()
 
 }
 
-IOperand * ProcessUnit::createOperand(eOperandType type, const std::string & value)
+IOperand * ProcessUnit::createOperand(OperandTpe::eOperandType type, const std::string & value)
 {
   std::cout << "CREATION dun operand  tpe : " << type << std::endl;  
   switch (type)
     {
-    case Int8:
+    case OperandTpe::Int8:
       _pile.push(createInt8(value));
       break;
-    case Int16:
+    case OperandTpe::Int16:
       _pile.push(createInt16(value));
       break;
-    case Int32:
+    case OperandTpe::Int32:
       _pile.push(createInt32(value));
+      break;
+    case OperandTpe::Double:
+      _pile.push(createDouble(value));
+      break;
+    case OperandTpe::Float:
+      _pile.push(createFloat(value));
       break;
     default :
       std::cout << "un probleme" << std::endl;
@@ -59,11 +65,30 @@ IOperand * ProcessUnit::createInt16(const std::string & value)
 
   return test;
 }
+
 IOperand * ProcessUnit::createInt32(const std::string & value)
 {
   IOperand *test;
 
   test = new class Int32(value);
+
+  return test;
+}
+
+IOperand * ProcessUnit::createDouble(const std::string & value)
+{
+  IOperand *test;
+
+  test = new class Double(value);
+
+  return test;
+}
+
+IOperand * ProcessUnit::createFloat(const std::string & value)
+{
+  IOperand *test;
+
+  test = new class Float(value);
 
   return test;
 }
@@ -74,8 +99,12 @@ void ProcessUnit::add()
   IOperand *nb2;
   IOperand *res;
 
+  if (_pile.empty())
+    throw ExceptOpe("the stack is empty");
   nb1 = _pile.top();
   _pile.pop();
+  if (_pile.empty())
+    throw ExceptOpe("not enough number in the stack");
   nb2 = _pile.top();
   _pile.pop();
   std::cout << "je vais additionner " << nb1->toString() << " et " <<  nb2->toString() << std::endl;
