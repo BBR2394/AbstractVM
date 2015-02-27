@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Fri Feb 27 14:51:03 2015 Bertrand-Rapello Baptiste
-// Last update Fri Feb 27 15:59:46 2015 Bertrand-Rapello Baptiste
+// Last update Fri Feb 27 17:09:10 2015 Bertrand-Rapello Baptiste
 //
 
 #include <iostream>
@@ -27,7 +27,12 @@ int	main(int ac, char **av)
 	}
       catch (const ExceptRead& e)
 	{
-	  std::cout << "une excpetion de lecture a ete jete" << std::endl;
+	  std::cout << "An exception \"ExceptRead\" has been thrown :\n     -> " << e.getComponent() << std::endl;
+	  return -1;
+	}
+      catch (const ExceptOpe& e)
+	{
+	  std::cout << "An exception \"ExceptOpe\" has been thrown :\n     -> " << e.getComponent() << std::endl;
 	  return -1;
 	}
       //mac.work();

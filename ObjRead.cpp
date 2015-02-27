@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Mon Feb  9 18:06:07 2015 Bertrand-Rapello Baptiste
-// Last update Fri Feb 27 15:59:08 2015 Bertrand-Rapello Baptiste
+// Last update Fri Feb 27 18:29:06 2015 Bertrand-Rapello Baptiste
 //
 
 #include		"Exception.hh"
@@ -15,11 +15,21 @@
 ObjRead::ObjRead() : _file(0)
 {
   _cpu = new ProcessUnit;
+  tabEOT["int8"] = OperandTpe::Int8;
+  tabEOT["int16"] = OperandTpe::Int16;
+  tabEOT["int32"] = OperandTpe::Int32;
+  tabEOT["double"] = OperandTpe::Double;
+  tabEOT["float"] = OperandTpe::Float;
 }
 
 ObjRead::ObjRead(std::string name) : _file(name.c_str())
 {
   _cpu = new ProcessUnit;
+  tabEOT["int8"] = OperandTpe::Int8;
+  tabEOT["int16"] = OperandTpe::Int16;
+  tabEOT["int32"] = OperandTpe::Int32;
+  tabEOT["double"] = OperandTpe::Double;
+  tabEOT["float"] = OperandTpe::Float;
 }
 
 ObjRead::~ObjRead()
@@ -28,8 +38,23 @@ ObjRead::~ObjRead()
 
 void			ObjRead::push_fc(std::string lnasm)
 {
+  std::string sub;
+  std::string type;
+  std::string nb;
+  size_t pos;
+  size_t posbis;
+
+  pos = lnasm.find(" ");
+  posbis = lnasm.find("(");
+  std::cout << posbis << std::endl;
+  type = lnasm.substr(pos+1, posbis-(pos+1));
+  pos = lnasm.find(")");
+  nb = lnasm.substr(posbis+1, pos-(posbis+1));
+
+  std::cout << "string !!! |" << type << "|  " << nb << std::endl;
   std::cout << "Ici j'ai push : " << lnasm << std::endl;
-  _cpu->createOperand(OperandTpe::Int8, "12");
+  std::cout << tabEOT[type] << std::endl;
+  _cpu->createOperand(tabEOT[type], nb);
 }
 
 void			ObjRead::pop_fc(std::string lnasm)
@@ -48,8 +73,24 @@ void			ObjRead::dump_fc(std::string lnasm)
 
 void			ObjRead::assert_fc(std::string lnasm)
 {
+  std::string sub;
+  std::string type;
+  std::string nb;
+  size_t pos;
+  size_t posbis;
+
   std::cout << "Ici j'ai assert : " << lnasm << std::endl;
-  //_cpu->assert();
+  pos = lnasm.find(" ");
+  posbis = lnasm.find("(");
+  std::cout << posbis << std::endl;
+  type = lnasm.substr(pos+1, posbis-(pos+1));
+  pos = lnasm.find(")");
+  nb = lnasm.substr(posbis+1, pos-(posbis+1));
+
+  std::cout << "string !!! |" << type << "|  " << nb << std::endl;
+  std::cout << "Ici j'ai push : " << lnasm << std::endl;
+  std::cout << tabEOT[type] << std::endl;
+  _cpu->assert(tabEOT[type], nb);
 }
 
 void			ObjRead::add_fc(std::string lnasm)
@@ -114,17 +155,17 @@ void			ObjRead::check_line(std::string lnasm)
   if (part1 == "\n")
     return;
   else if (part1 == "push")
-    push_fc(part1);
+    push_fc(lnasm);
   else if (part1 == "pop")
     pop_fc(part1);
   else if (part1 == "dump")
     dump_fc(part1);
   else if (part1 == "assert")
-    assert_fc(part1);
+    assert_fc(lnasm);
   else if (part1 == "add")
     add_fc(part1);
   else if (part1 == "sub")
-    add_fc(part1);
+    sub_fc(part1);
   else if (part1 == "mul")
     mul_fc(part1);
   else if (part1 == "div")
@@ -153,6 +194,6 @@ void			ObjRead::readASM()
 	}
     }
   else
-    throw ExceptRead("problem with the file ..");
+    throw ExceptRead("probleme hapened when reading the file");
   std::cout << "End of File" << std::endl;
 }

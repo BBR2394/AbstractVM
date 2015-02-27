@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Mon Feb 23 09:47:56 2015 Bertrand-Rapello Baptiste
-// Last update Fri Feb 27 15:34:05 2015 Bertrand-Rapello Baptiste
+// Last update Fri Feb 27 19:37:26 2015 Bertrand-Rapello Baptiste
 //
 
 #include <cstdlib>
@@ -339,12 +339,26 @@ Double::Double(const std::string &v) : _repre(v)
 {
   long double res;
   std::istringstream convert(_repre);
+  std::string nb1;
+  std::string nb2;
+  std::ostringstream convert1;
+  std::ostringstream convert2;
 
   if (!(convert >> res))
     throw ExceptOpe("bad number");
   _value = (double)res;
-  std::cout << "je suis un int 32 et ma valeur est " << _repre << " " << _value << std::endl;
-  if ((long double)_value != res)
+
+  std::cout << "je suis un double et ma valeur est " << _repre << " " << _value << std::endl;
+  std::cout << "res : " << res << (double)res << " " << _value << (long double)_value << std::endl;
+  convert1 << res;
+  convert2 << _value;
+  nb1 = convert1.str();
+  nb2 = convert2.str();
+  /*
+  if (_value != (double)res)
+    throw ExceptOpe("contener not enough large for the number (overflow)");
+  */
+  if (nb1 != nb2)
     throw ExceptOpe("contener not enough large for the number (overflow)");
   _tpe = OperandTpe::Double;
 }
@@ -448,14 +462,14 @@ IOperand *Double::operator%(const IOperand &rhs) const
 
 Float::Float(const std::string &v) : _repre(v)
 {
-  double res;
+  float res;
   std::istringstream convert(_repre);
 
   if (!(convert >> res))
     throw ExceptOpe("bad number");
   _value = (float)res;
-  std::cout << "je suis un int 32 et ma valeur est " << _repre << " " << _value  << std::endl;
-  if ((double)_value != res)
+  std::cout << "je suis un float et ma valeur est " << _repre << " " << _value  << std::endl;
+  if ((float)_value != res)
     throw ExceptOpe("contener not enough large for the number (overflow)");
   _tpe = OperandTpe::Float;
 }

@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Thu Feb 19 14:58:26 2015 Bertrand-Rapello Baptiste
-// Last update Fri Feb 27 15:35:00 2015 Bertrand-Rapello Baptiste
+// Last update Fri Feb 27 20:32:45 2015 Bertrand-Rapello Baptiste
 //
 
 #include <cstdlib>
@@ -118,14 +118,15 @@ void ProcessUnit::add()
   std::cout << "je vais additionner " << nb1->toString() << " et " <<  nb2->toString() << std::endl;
   if (nb1->getType() <= nb2->getType())
     {
-      res = *nb1 + *nb2;
+      res = *nb2 + *nb1;
       _pile.push(res);
       std::cout << "le type du nouvel objet (1) " << res->getType() << std::endl;
       //res = createOperand(nb1->getType(),
     }
   else 
     {
-      res = *nb2 + *nb1;
+      std::cout << "ELSE" << std::endl;
+      res = *nb1 + *nb2;
       std::cout << "le type du nouvel objet (2) " << res->getType() << std::endl;
       _pile.push(res);
     }
@@ -138,6 +139,7 @@ void ProcessUnit::sub()
   IOperand *nb1;
   IOperand *nb2;
   IOperand *res;
+  IOperand *neg;
 
   nb1 = _pile.top();
   _pile.pop();
@@ -146,15 +148,20 @@ void ProcessUnit::sub()
   std::cout << "je vais soustraire " << nb1->toString() << " et " <<  nb2->toString() << "et le type " << nb1->getType() << " " << nb2->getType() << std::endl;
   if (nb1->getType() <= nb2->getType())
     {
-      res = *nb1 - *nb2;
+      res = *nb2 - *nb1;
       _pile.push(res);
     }
   else
     {
       std::cout << "else " << std::endl;
-      res = *nb2 -  *nb1;
+      createOperand(nb2->getType(), "-1");
+      neg = _pile.top();
+      _pile.pop();
+      res = (*nb1 * *neg);
+      res = *res + *nb2;
       _pile.push(res);
     }
+  delete neg;
   delete nb1;
   delete nb2;
 }
@@ -196,9 +203,10 @@ void ProcessUnit::div()
   _pile.pop();
   nb2 = _pile.top();
   _pile.pop();
-  std::cout << "je vais diviser " << nb1->toString() << " et " <<  nb2->toString() << "et le type " << nb1->getType() << " " << nb2->getType() << std::endl;
-  if (nb1->getType() <= nb2->getType())
+  std::cout << "je vais diviser " << nb1->toString() << "  et " <<  nb2->toString() << "et le type " << nb1->getType() << " " << nb2->getType() << std::endl;
+  if (nb2->getType() <= nb1->getType())
     {
+      std::cout << "first" << std::endl;
       res = *nb2 / *nb1;
       _pile.push(res);
     }
@@ -207,7 +215,8 @@ void ProcessUnit::div()
       //attention
       std::cout << "else " << std::endl;
       res = *nb2 / *nb1;
-      _pile.push(res);
+      createOperand(nb1->getType(), res->toString());
+      //_pile.push(res);
     }
   delete nb1;
   delete nb2;
@@ -218,13 +227,14 @@ void ProcessUnit::mod()
   IOperand *nb1;
   IOperand *nb2;
   IOperand *res;
+  IOperand *inv;
 
   nb1 = _pile.top();
   _pile.pop();
   nb2 = _pile.top();
   _pile.pop();
   std::cout << "je vais Moduler " << nb1->toString() << " et " <<  nb2->toString() << "et le type " << nb1->getType() << " " << nb2->getType() << std::endl;
-  if (nb1->getType() <= nb2->getType())
+  if (nb2->getType() <= nb1->getType())
     {
       res = *nb2 % *nb1;
       _pile.push(res);
@@ -232,9 +242,11 @@ void ProcessUnit::mod()
   else
     {
       //attention
+      std::cout << "else" << std::endl;
       std::cout << "else " << std::endl;
       res = *nb2 % *nb1;
-      _pile.push(res);
+      createOperand(nb1->getType(), res->toString());
+      //_pile.push(res);
     }
   delete nb1;
   delete nb2;
@@ -249,7 +261,7 @@ void ProcessUnit::dump()
   while (!cpy.empty())
     {
       cpybis = cpy.top();
-      std::cout << cpybis->toString() << std::endl;
+      std::cout << "type   :" << cpybis->getType() << "|  " << cpybis->toString() << std::endl;
       cpy.pop();
     }
   
@@ -259,6 +271,7 @@ void ProcessUnit::pop()
 {
   if (_pile.empty())
     throw ExceptOpe("pile vide (pop)");
+  std::cout << "je pop" << std::endl;
   _pile.pop();
 }
 
