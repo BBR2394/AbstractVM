@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Mon Feb 23 09:47:56 2015 Bertrand-Rapello Baptiste
-// Last update Fri Feb 27 19:37:26 2015 Bertrand-Rapello Baptiste
+// Last update Fri Feb 27 22:36:39 2015 Bertrand-Rapello Baptiste
 //
 
 #include <cstdlib>
@@ -37,7 +37,7 @@ Int8::~Int8()
 
 int Int8::getPrecision() const
 {
-  return 0;
+  return (int)_tpe;
 }
 
 std::string const & Int8::toString() const
@@ -61,13 +61,9 @@ IOperand *Int8::operator+(const IOperand &rhs) const
   std::istringstream convert(rhs.toString());
   std::ostringstream chartostring;
   int res;
-  //int flow;
 
   convert >> res;  
   chartostring << (char)res + this->getValue();
-  //flow = res + (int)this->getValue();
-  //if (flow != ((char)res + this->getValue()))
-    //  throw ExceptOpe("overflow");
   newo = new Int8(chartostring.str());
   return newo;
 }
@@ -91,13 +87,9 @@ IOperand *Int8::operator*(const IOperand &rhs) const
   std::istringstream convert(rhs.toString());
   std::ostringstream chartostring;
   int res;
-  //int	flow;
 
   convert >> res;
   chartostring << this->getValue() * (char)res;
-  /*flow = res + (int)this->getValue();
-  if (flow != ((char)res * this->getValue()))
-    throw ExceptOpe("overflow");*/
   newo = new Int8(chartostring.str());
   return newo;
 }
@@ -139,6 +131,8 @@ Int16::Int16(const std::string &v) : _repre(v)
   if ((int)_value != res)
     throw ExceptOpe("contener not enough large for the number (overflow)");
   _tpe = OperandTpe::Int16;
+
+  std::cout << "int 16 construit" << std::endl;
 }
 
 Int16::~Int16()
@@ -148,7 +142,7 @@ Int16::~Int16()
 
 int Int16::getPrecision() const
 {
-  return 0;
+  return (int)_tpe;
 }
 
 std::string const & Int16::toString() const
@@ -187,7 +181,7 @@ IOperand *Int16::operator-(const IOperand &rhs) const
   int res;
 
   convert >> res;
-  chartostring << this->getValue() + (short)res;
+  chartostring << this->getValue() - (short)res;
   newo = new Int16(chartostring.str());
   return newo;
 }
@@ -243,6 +237,8 @@ Int32::Int32(const std::string &v) : _repre(v)
   if ((long)_value != res)
     throw ExceptOpe("contener not enough large for the number (overflow)");
   _tpe = OperandTpe::Int32;
+
+  std::cout << "int 32 construit" << std::endl;
 }
 
 Int32::~Int32()
@@ -252,7 +248,7 @@ Int32::~Int32()
 
 int Int32::getPrecision() const
 {
-  return 0;
+  return (int)_tpe;
 }
 
 std::string const & Int32::toString() const
@@ -354,13 +350,10 @@ Double::Double(const std::string &v) : _repre(v)
   convert2 << _value;
   nb1 = convert1.str();
   nb2 = convert2.str();
-  /*
-  if (_value != (double)res)
-    throw ExceptOpe("contener not enough large for the number (overflow)");
-  */
   if (nb1 != nb2)
     throw ExceptOpe("contener not enough large for the number (overflow)");
   _tpe = OperandTpe::Double;
+  std::cout << "double construi" << std::endl;
 }
 
 Double::~Double()
@@ -370,7 +363,7 @@ Double::~Double()
 
 int Double::getPrecision() const
 {
-  return 0;
+  return (int)_tpe;
 }
 
 std::string const & Double::toString() const
@@ -453,8 +446,6 @@ IOperand *Double::operator%(const IOperand &rhs) const
     throw ExceptOpe("modulus can be make only on a integer");
   else if ((double)nb2 != (double)this->getValue())
     throw ExceptOpe("modulus can be make only on a integer"); 
-
-  //pour le double le modulo n'est pas comme cela
   chartostring << (int)this->getValue() % (int)res;
   newo = new Double(chartostring.str());
   return newo;
@@ -472,6 +463,8 @@ Float::Float(const std::string &v) : _repre(v)
   if ((float)_value != res)
     throw ExceptOpe("contener not enough large for the number (overflow)");
   _tpe = OperandTpe::Float;
+
+  std::cout << "float construit" << std::endl;
 }
 
 Float::~Float()
@@ -481,7 +474,7 @@ Float::~Float()
 
 int Float::getPrecision() const
 {
-  return 0;
+  return (int)_tpe;
 }
 
 std::string const & Float::toString() const

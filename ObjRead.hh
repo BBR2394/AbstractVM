@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Mon Feb  9 18:03:29 2015 Bertrand-Rapello Baptiste
-// Last update Fri Feb 27 16:38:29 2015 Bertrand-Rapello Baptiste
+// Last update Fri Feb 27 22:48:18 2015 Bertrand-Rapello Baptiste
 //
 
 #ifndef		OBJREAD_HH_
@@ -37,6 +37,7 @@ public:
   ObjRead();
   ObjRead(std::string name);
   ~ObjRead();
+  bool _ifExit;
   
 private:
   std::ifstream	_file;
@@ -54,7 +55,6 @@ public:
   void		div_fc(std::string);
   void		mod_fc(std::string);
   void		print_fc(std::string);
-  void		exit_fc(std::string);
   void		check_line(std::string);
 };
 
