@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Mon Feb  9 16:50:02 2015 Bertrand-Rapello Baptiste
-// Last update Fri Feb 27 05:41:48 2015 mantez paul
+// Last update Fri Feb 27 14:29:58 2015 Bertrand-Rapello Baptiste
 //
 
 #include <iostream>
@@ -20,8 +20,9 @@ int	main()
   //ObjRead file;
   ProcessUnit cpu;
 
+  file.readASM();
   std::cout << "bonjour" << std::endl;
-  std::cout << file.readASM() << std::endl;
+  //std::cout << file.readASM() << std::endl;
   try
     {
       cpu.createOperand(OperandTpe::Int8, "10");

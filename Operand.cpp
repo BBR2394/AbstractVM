@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Mon Feb 23 09:47:56 2015 Bertrand-Rapello Baptiste
-// Last update Thu Feb 26 15:39:30 2015 Bertrand-Rapello Baptiste
+// Last update Fri Feb 27 15:34:05 2015 Bertrand-Rapello Baptiste
 //
 
 #include <cstdlib>
@@ -27,6 +27,7 @@ Int8::Int8(const std::string &v) : _repre(v)
   if ((int)_value != res)
     throw ExceptOpe("contener not enough large for the number (overflow)");
   _tpe = OperandTpe::Int8;
+  std::cout << "int8 construit" << std::endl;
 }
 
 Int8::~Int8()

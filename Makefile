@@ -3,7 +3,7 @@ CC	=	clang++
 
 NAME	=	avm	
 
-SRC	=	main.cpp	\
+SRC	=	MainDeTest.cpp	\
 		ObjRead.cpp	\
 		Operand.cpp	\
 		ProcessUnit.cpp	\

@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Thu Feb 19 14:58:26 2015 Bertrand-Rapello Baptiste
-// Last update Fri Feb 27 05:45:13 2015 mantez paul
+// Last update Fri Feb 27 15:35:00 2015 Bertrand-Rapello Baptiste
 //
 
 #include <cstdlib>
@@ -52,7 +52,7 @@ IOperand * ProcessUnit::createOperand(OperandTpe::eOperandType type, const std::
       std::cout << "un probleme" << std::endl;
       break;
     }
-  
+  std::cout << "j'ai push dans la stakc" << std::endl;  
   return NULL;
 }
 

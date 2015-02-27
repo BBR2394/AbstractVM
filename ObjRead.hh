@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Mon Feb  9 18:03:29 2015 Bertrand-Rapello Baptiste
-// Last update Fri Feb 27 05:23:47 2015 mantez paul
+// Last update Fri Feb 27 15:43:29 2015 Bertrand-Rapello Baptiste
 //
 
 #ifndef		OBJREAD_HH_
@@ -14,6 +14,7 @@
 # include	<iostream>
 # include	<string>
 # include	<fstream>
+# include	"ProcessUnit.hh"
 
 class		ObjRead
 {
@@ -39,7 +40,7 @@ public:
   
 private:
   std::ifstream	_file;
-
+  ProcessUnit	*_cpu;
 public:
   void		readASM();
   void		push_fc(std::string);
