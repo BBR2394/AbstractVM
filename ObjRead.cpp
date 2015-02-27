@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Mon Feb  9 18:06:07 2015 Bertrand-Rapello Baptiste
-// Last update Fri Feb 27 22:49:27 2015 Bertrand-Rapello Baptiste
+// Last update Fri Feb 27 22:57:19 2015 Bertrand-Rapello Baptiste
 //
 
 #include		"Exception.hh"
@@ -56,6 +56,8 @@ void			ObjRead::push_fc(std::string lnasm)
   //std::cout << "string !!! |" << type << "|  " << nb << std::endl;
   std::cout << "Ici j'ai push push fn: " << lnasm << std::endl;
   //std::cout << tabEOT[type] << std::endl;
+  if (!tabEOT[type])
+    throw ExceptRead("operand unknown");
   _cpu->createOperand(tabEOT[type], nb);
 }
 

@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Mon Feb  9 16:27:02 2015 Bertrand-Rapello Baptiste
-// Last update Wed Feb 25 14:10:15 2015 Bertrand-Rapello Baptiste
+// Last update Fri Feb 27 22:58:55 2015 Bertrand-Rapello Baptiste
 //
 
 #ifndef IOPERAND_HH_
@@ -17,21 +17,22 @@ namespace OperandTpe
 {
   enum eOperandType
     {
-      Int8,
+      Int8 = 1,
       Int16,
       Int32,
       Float,
       Double
     };
 }
+/*
   enum eOperandType
     {
-      Int8,
+      Int8 = 1,
       Int16,
       Int32,
       Float,
       Double
-    }; 
+      }; */
 
 
 class IOperand
