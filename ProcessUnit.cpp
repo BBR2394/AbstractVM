@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Thu Feb 19 14:58:26 2015 Bertrand-Rapello Baptiste
-// Last update Thu Feb 26 19:00:44 2015 Bertrand-Rapello Baptiste
+// Last update Fri Feb 27 05:45:13 2015 mantez paul
 //
 
 #include <cstdlib>
@@ -132,6 +132,7 @@ void ProcessUnit::add()
   delete nb1;
   delete nb2;
 }
+
 void ProcessUnit::sub()
 {
   IOperand *nb1;
