@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Thu Feb 19 14:58:26 2015 Bertrand-Rapello Baptiste
-// Last update Fri Feb 27 22:43:33 2015 Bertrand-Rapello Baptiste
+// Last update Sat Feb 28 01:11:02 2015 Bertrand-Rapello Baptiste
 //
 
 #include <cstdlib>
@@ -28,34 +28,10 @@ ProcessUnit::~ProcessUnit()
 IOperand * ProcessUnit::createOperand(OperandTpe::eOperandType type, const std::string & value)
 {
   IOperand *nb;
-  std::cout << "CREATION dun operand  tpe : " << type << std::endl;
+
   nb = ((this->*tabPtr[type])(value));
-  std::cout << "j'ai push dans la stakc" << std::endl; 
   _pile.push(nb);
-  //this->tabPtr[type](value);
   return NULL;
-  /*switch (type)
-    {
-    case OperandTpe::Int8:
-      _pile.push(createInt8(value));
-      break;
-    case OperandTpe::Int16:
-      _pile.push(createInt16(value));
-      break;
-    case OperandTpe::Int32:
-      _pile.push(createInt32(value));
-      break;
-    case OperandTpe::Double:
-      _pile.push(createDouble(value));
-      break;
-    case OperandTpe::Float:
-      _pile.push(createFloat(value));
-      break;
-    default :
-      break;
-    }
-  std::cout << "j'ai push dans la stakc" << std::endl;  
-  return NULL;*/
 }
 
 IOperand * ProcessUnit::createInt8(const std::string & value)
@@ -117,18 +93,14 @@ void ProcessUnit::add()
     throw ExceptOpe("not enough number in the stack");
   nb2 = _pile.top();
   _pile.pop();
-  std::cout << "je vais additionner " << nb1->toString() << " et " <<  nb2->toString() << std::endl;
   if (nb1->getPrecision() <= nb2->getPrecision())
     {
       res = *nb2 + *nb1;
       _pile.push(res);
-      std::cout << "le type du nouvel objet (1) " << res->getType() << std::endl;
     }
   else 
     {
-      std::cout << "ELSE" << std::endl;
       res = *nb1 + *nb2;
-      std::cout << "le type du nouvel objet (2) " << res->getType() << std::endl;
       _pile.push(res);
     }
   delete nb1;
@@ -146,21 +118,17 @@ void ProcessUnit::sub()
   _pile.pop();
   nb2 = _pile.top();
   _pile.pop();
-  std::cout << "je vais soustraire " << nb1->toString() << " et " <<  nb2->toString() << "et le type " << nb1->getType() << " " << nb2->getType() << std::endl;
   if (nb1->getPrecision() <= nb2->getPrecision())
     {
-      std::cout << "first" << std::endl;
       res = *nb2 - *nb1;
       _pile.push(res);
     }
   else
     {
-      std::cout << "else " << std::endl;
       createOperand(nb1->getType(), "-1");
       neg = _pile.top();
       _pile.pop();
       res = (*nb1 * *neg);
-      std::cout << "res inter " << res->toString() << std::endl;
       res = *res + *nb2;
       _pile.push(res);
       delete neg;
@@ -179,7 +147,6 @@ void ProcessUnit::mul()
   _pile.pop();
   nb2 = _pile.top();
   _pile.pop();
-  std::cout << "je vais multiplier " << nb1->toString() << " et " <<  nb2->toString() << "et le type " << nb1->getType() << " " << nb2->getType() << std::endl;
   if (nb1->getPrecision() <= nb2->getPrecision())
     {
       res = *nb2 * *nb1;
@@ -187,7 +154,6 @@ void ProcessUnit::mul()
     }
   else
     {
-      std::cout << "else " << std::endl;
       res = *nb1 * *nb2;
       _pile.push(res);
     }
@@ -206,19 +172,15 @@ void ProcessUnit::div()
   _pile.pop();
   nb2 = _pile.top();
   _pile.pop();
-  std::cout << "je vais diviser " << nb1->toString() << "  et " <<  nb2->toString() << "et le type " << nb1->getType() << " " << nb2->getType() << std::endl;
   if (nb1->toString() == "0")
     throw ExceptOpe("denominater must be different than 0");
   if (nb1->getPrecision() <= nb2->getPrecision())
     {
-      std::cout << "first" << std::endl;
       res = *nb2 / *nb1;
       _pile.push(res);
     }
   else
     {
-      //attention
-      std::cout << "else " << std::endl;
       res = *nb2 / *nb1;
       createOperand(nb1->getType(), res->toString());
     }
@@ -237,7 +199,6 @@ void ProcessUnit::mod()
   _pile.pop();
   nb2 = _pile.top();
   _pile.pop();
-  std::cout << "je vais Moduler " << nb1->toString() << " et " <<  nb2->toString() << "et le type " << nb1->getType() << " " << nb2->getType() << std::endl;
   if (nb1->toString() == "0")
     throw ExceptOpe("denominater must be different than 0");
   if (nb1->getPrecision() <= nb2->getPrecision())
@@ -247,12 +208,8 @@ void ProcessUnit::mod()
     }
   else
     {
-      //attention
-      std::cout << "else" << std::endl;
-      std::cout << "else " << std::endl;
       res = *nb2 % *nb1;
       createOperand(nb1->getType(), res->toString());
-      //_pile.push(res);
     }
   delete nb1;
   delete nb2;
@@ -269,15 +226,13 @@ void ProcessUnit::dump()
       cpybis = cpy.top();
       std::cout << cpybis->toString() << std::endl;
       cpy.pop();
-    }
-  
+    }  
 }
 
 void ProcessUnit::pop()
 {
   if (_pile.empty())
-    throw ExceptOpe("pile vide (pop)");
-  std::cout << "je pop" << std::endl;
+    throw ExceptOpe("pile empty, pop impossible ");
   _pile.pop();
 }
 

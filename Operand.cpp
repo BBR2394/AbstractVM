@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Mon Feb 23 09:47:56 2015 Bertrand-Rapello Baptiste
-// Last update Fri Feb 27 22:36:39 2015 Bertrand-Rapello Baptiste
+// Last update Sat Feb 28 01:08:51 2015 Bertrand-Rapello Baptiste
 //
 
 #include <cstdlib>
@@ -18,16 +18,12 @@ Int8::Int8(const std::string &v) : _repre(v)
   int res;
   std::istringstream convert(_repre);
 
-  //a enlever !!
   if (!(convert >> res))
     throw ExceptOpe("bad number");
   _value = (char)res;
-  //_value = atoi(_repre.c_str());
-  std::cout << "je suis un int 8 et ma valeur est " << _repre << " " << (int)_value << std::endl;
   if ((int)_value != res)
     throw ExceptOpe("contener not enough large for the number (overflow)");
   _tpe = OperandTpe::Int8;
-  std::cout << "int8 construit" << std::endl;
 }
 
 Int8::~Int8()
@@ -124,15 +120,13 @@ Int16::Int16(const std::string &v) : _repre(v)
 {
   int res;
   std::istringstream convert(_repre);
+
   if (!(convert >> res))
     throw ExceptOpe("bad number");
   _value = (short)res;
-  std::cout << "je suis un int 16 et ma valeur est " << _repre << "  " << _value << std::endl;
   if ((int)_value != res)
     throw ExceptOpe("contener not enough large for the number (overflow)");
   _tpe = OperandTpe::Int16;
-
-  std::cout << "int 16 construit" << std::endl;
 }
 
 Int16::~Int16()
@@ -233,12 +227,9 @@ Int32::Int32(const std::string &v) : _repre(v)
   if (!(convert >> res))
     throw ExceptOpe("bad number");
   _value = (int)res;
-  std::cout << "je suis un int 32 et ma valeur est " << _repre << std::endl;
   if ((long)_value != res)
     throw ExceptOpe("contener not enough large for the number (overflow)");
   _tpe = OperandTpe::Int32;
-
-  std::cout << "int 32 construit" << std::endl;
 }
 
 Int32::~Int32()
@@ -343,9 +334,6 @@ Double::Double(const std::string &v) : _repre(v)
   if (!(convert >> res))
     throw ExceptOpe("bad number");
   _value = (double)res;
-
-  std::cout << "je suis un double et ma valeur est " << _repre << " " << _value << std::endl;
-  std::cout << "res : " << res << (double)res << " " << _value << (long double)_value << std::endl;
   convert1 << res;
   convert2 << _value;
   nb1 = convert1.str();
@@ -353,7 +341,6 @@ Double::Double(const std::string &v) : _repre(v)
   if (nb1 != nb2)
     throw ExceptOpe("contener not enough large for the number (overflow)");
   _tpe = OperandTpe::Double;
-  std::cout << "double construi" << std::endl;
 }
 
 Double::~Double()
@@ -392,7 +379,6 @@ IOperand *Double::operator+(const IOperand &rhs) const
   chartostring << (double)res + this->getValue();
   newo = new Double(chartostring.str());
   return newo;
-
 }
 
 IOperand *Double::operator-(const IOperand &rhs) const
@@ -459,12 +445,9 @@ Float::Float(const std::string &v) : _repre(v)
   if (!(convert >> res))
     throw ExceptOpe("bad number");
   _value = (float)res;
-  std::cout << "je suis un float et ma valeur est " << _repre << " " << _value  << std::endl;
   if ((float)_value != res)
     throw ExceptOpe("contener not enough large for the number (overflow)");
   _tpe = OperandTpe::Float;
-
-  std::cout << "float construit" << std::endl;
 }
 
 Float::~Float()
