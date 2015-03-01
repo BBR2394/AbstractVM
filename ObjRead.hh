@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Mon Feb  9 18:03:29 2015 Bertrand-Rapello Baptiste
-// Last update Fri Feb 27 22:48:18 2015 Bertrand-Rapello Baptiste
+// Last update Sun Mar  1 21:50:30 2015 Bertrand-Rapello Baptiste
 //
 
 #ifndef		OBJREAD_HH_
@@ -14,6 +14,7 @@
 # include	<iostream>
 # include	<string>
 # include	<fstream>
+# include	<list>
 # include	"ProcessUnit.hh"
 
 class		ObjRead
@@ -37,12 +38,13 @@ public:
   ObjRead();
   ObjRead(std::string name);
   ~ObjRead();
-  bool _ifExit;
   
 private:
   std::ifstream	_file;
   ProcessUnit	*_cpu;
-  std::map<std::string, OperandTpe::eOperandType> tabEOT;
+  bool _ifExit;
+  std::map<std::string, OperandTpe::eOperandType>	tabEOT;
+  std::list<std::string>				_listRead;
 public:
   void		readASM();
   void		push_fc(std::string);
@@ -56,6 +58,8 @@ public:
   void		mod_fc(std::string);
   void		print_fc(std::string);
   void		check_line(std::string);
+  void		readOnCin();
+  void		execFromCin();
 };
 
 

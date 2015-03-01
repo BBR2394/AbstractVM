@@ -5,7 +5,7 @@
 // Login   <bertra_l@epitech.net>
 // 
 // Started on  Mon Feb  9 18:06:07 2015 Bertrand-Rapello Baptiste
-// Last update Fri Feb 27 22:57:19 2015 Bertrand-Rapello Baptiste
+// Last update Sun Mar  1 22:52:00 2015 Bertrand-Rapello Baptiste
 //
 
 #include		"Exception.hh"
@@ -48,14 +48,10 @@ void			ObjRead::push_fc(std::string lnasm)
 
   pos = lnasm.find(" ");
   posbis = lnasm.find("(");
-  //std::cout << posbis << std::endl;
   type = lnasm.substr(pos+1, posbis-(pos+1));
   pos = lnasm.find(")");
   nb = lnasm.substr(posbis+1, pos-(posbis+1));
 
-  //std::cout << "string !!! |" << type << "|  " << nb << std::endl;
-  std::cout << "Ici j'ai push push fn: " << lnasm << std::endl;
-  //std::cout << tabEOT[type] << std::endl;
   if (!tabEOT[type])
     throw ExceptRead("operand unknown");
   _cpu->createOperand(tabEOT[type], nb);
@@ -63,15 +59,11 @@ void			ObjRead::push_fc(std::string lnasm)
 
 void			ObjRead::pop_fc(std::string lnasm)
 {
-  //std::cout << "Ici j'ai pop : " << lnasm << std::endl;
-
   _cpu->pop();
 }
 
 void			ObjRead::dump_fc(std::string lnasm)
 {
-  //std::cout << "Ici j'ai dump : " << lnasm << std::endl;
-
   _cpu->dump();
 }
 
@@ -83,59 +75,44 @@ void			ObjRead::assert_fc(std::string lnasm)
   size_t pos;
   size_t posbis;
 
-  //std::cout << "Ici j'ai assert : " << lnasm << std::endl;
+
   pos = lnasm.find(" ");
   posbis = lnasm.find("(");
-  //std::cout << posbis << std::endl;
+
   type = lnasm.substr(pos+1, posbis-(pos+1));
   pos = lnasm.find(")");
   nb = lnasm.substr(posbis+1, pos-(posbis+1));
 
-  //std::cout << "string !!! |" << type << "|  " << nb << std::endl;
-  std::cout << "Ici j'ai push : " << lnasm << std::endl;
-  //std::cout << tabEOT[type] << std::endl;
   _cpu->assert(tabEOT[type], nb);
 }
 
 void			ObjRead::add_fc(std::string lnasm)
 {
-  //  std::cout << "Ici j'ai add : " << lnasm << std::endl;
-
   _cpu->add();
 }
 
 void			ObjRead::sub_fc(std::string lnasm)
 {
-  //std::cout << "Ici j'ai sub : " << lnasm << std::endl;
-
   _cpu->sub();
 }
 
 void			ObjRead::mul_fc(std::string lnasm)
 {
-  //std::cout << "Ici j'ai mul : " << lnasm << std::endl;
-
   _cpu->mul();
 }
 
 void			ObjRead::div_fc(std::string lnasm)
 {
-  //std::cout << "Ici j'ai div : " << lnasm << std::endl;
-
   _cpu->div();
 }
 
 void			ObjRead::mod_fc(std::string lnasm)
 {
-  //std::cout << "Ici j'ai mod : " << lnasm << std::endl;
-
   _cpu->mod();
 }
 
 void			ObjRead::print_fc(std::string lnasm)
 {
-  //std::cout << "Ici j'ai print : " << lnasm << std::endl;
-
   _cpu->print();
 }
 
@@ -190,7 +167,6 @@ void			ObjRead::readASM()
 	{
 	  if (lnasm[0] != 0)
 	    {
-	      std::cout << "Object Checked : " << lnasm << std::endl;
 	      check_line(lnasm);
 	      if (_ifExit == true)
 		return;
@@ -201,5 +177,37 @@ void			ObjRead::readASM()
     throw ExceptRead("probleme hapened when reading the file");
   if (_ifExit == false)
     throw ExceptRead("No Exit");
-  //std::cout << "End of File" << std::endl;
+}
+
+void			ObjRead::readOnCin()
+{
+  std::string	line;
+  bool	stop = false;
+
+  while (stop != true)
+    {
+      getline (std::cin, line);
+      _listRead.push_back(line);
+      if (line[0] == ';' && line[1] == ';')
+	stop = true;
+    }
+}
+
+void			ObjRead::execFromCin()
+{
+  std::string           lnasm;
+  std::list<std::string>::iterator itList = _listRead.begin();
+
+  while (itList != _listRead.end())
+    {
+      lnasm = _listRead.front();
+      itList++;
+      _listRead.pop_front();
+      check_line(lnasm);
+      if (_ifExit == true)
+	return;
+    }
+
+  if (_ifExit == false)
+    throw ExceptRead("No Exit");
 }
